@@ -74,17 +74,21 @@ server.on('request', (req, res) => {
             <div class="container">
                 <img src="../public/images/image${id}.jpg">
             </div>
-            <form action="/image-description" method="post">
-                <input type="hidden" name="nb_image" value="${id}">
-                <input type="text" name="description">
-                <input type="submit" value="envoyer">
-            </form>
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 20px;">
+                <form action="/image-description" method="post">
+                    <input type="hidden" name="nb_image" value="${id}">
+                    <input type="text" name="description">
+                    <input type="submit" value="envoyer">
+                </form>
+            </div>
             
             `;
         if (commentaire[String(id)]){
+            html += '<div style="display: flex; flex-direction: column; align-items: center;">';
             commentaire[String(id)].forEach((com) => {
                 html += `<p>${com}</p>`;
             });
+            html += '</div>';
         }
         if (id === 1) { 
             html += `<div class="container">
